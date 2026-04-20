@@ -11,28 +11,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
-const user_service_1 = require("../user/user.service");
 const registeruser_dto_1 = require("./registeruser.dto");
-const bcrypt_1 = __importDefault(require("bcrypt"));
+const auth_service_1 = require("./auth.service");
 let AuthController = class AuthController {
-    userService;
-    constructor(userService) {
-        this.userService = userService;
+    authService;
+    constructor(authService) {
+        this.authService = authService;
     }
     async register(registerUserDto) {
-        console.log('Received registration data:', registerUserDto);
-        const saltRounds = 10;
-        const hash = await bcrypt_1.default.hash(registerUserDto.password, saltRounds);
-        return this.userService.createUser({
-            ...registerUserDto,
-            password: hash,
-        });
+        return await this.authService.registerUser(registerUserDto);
     }
 };
 exports.AuthController = AuthController;
@@ -45,6 +35,6 @@ __decorate([
 ], AuthController.prototype, "register", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
-    __metadata("design:paramtypes", [user_service_1.UserService])
+    __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], AuthController);
 //# sourceMappingURL=auth.controller.js.map
