@@ -14,4 +14,7 @@ export declare class AuthController {
         };
         token: string;
     }>;
+    login(): Promise<{
+        message: string;
+    }>;
 }

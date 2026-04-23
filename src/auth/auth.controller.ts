@@ -10,4 +10,16 @@ export class AuthController {
   async register(@Body() registerUserDto: RegisterUserDto) {
     return await this.authService.registerUser(registerUserDto);
   }
+
+  @Post('login')
+  async login() {
+    // assignment
+
+    /** 
+     * 1. Receive email and  password
+     * 2. Match the email and password
+     * 3. Generate JWT token
+     */
+    return { message: 'Login endpoint' };
+  }
 }

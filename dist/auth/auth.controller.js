@@ -24,6 +24,9 @@ let AuthController = class AuthController {
     async register(registerUserDto) {
         return await this.authService.registerUser(registerUserDto);
     }
+    async login() {
+        return { message: 'Login endpoint' };
+    }
 };
 exports.AuthController = AuthController;
 __decorate([
@@ -33,6 +36,12 @@ __decorate([
     __metadata("design:paramtypes", [registeruser_dto_1.RegisterUserDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "register", null);
+__decorate([
+    (0, common_1.Post)('login'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "login", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
