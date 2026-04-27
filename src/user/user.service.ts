@@ -1,6 +1,6 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { RegisterUserDto } from 'src/auth/registeruser.dto';
+import { RegisterUserDto } from 'src/auth/user.dto';
 import { User } from './schemas/user.schema';
 import { Model } from 'mongoose';
 
@@ -26,5 +26,13 @@ export class UserService {
       }
       throw err;
     }
+  }
+
+  async findByEmail(email: string) {
+    return await this.userModel.findOne({ email }).exec();
+  }
+
+  async getUserById(userId: string) {
+    return await this.userModel.findById(userId).select('-password').exec();
   }
 }

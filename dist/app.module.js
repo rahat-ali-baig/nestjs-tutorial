@@ -16,6 +16,7 @@ const user_module_1 = require("./user/user.module");
 const mongoose_1 = require("@nestjs/mongoose");
 const config_1 = require("@nestjs/config");
 const email_module_1 = require("./email/email.module");
+const course_module_1 = require("./course/course.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -31,6 +32,7 @@ exports.AppModule = AppModule = __decorate([
             auth_module_1.AuthModule,
             user_module_1.UserModule,
             email_module_1.EmailModule,
+            course_module_1.CourseModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
